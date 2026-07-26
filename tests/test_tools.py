@@ -2,7 +2,6 @@
 Tool 함수 단위 테스트 — API 키 불필요, sample CSV 사용
 """
 import os
-import pytest
 
 # sample CSV 강제 사용
 os.environ["WARSHIPS_CSV"] = str(
@@ -10,7 +9,6 @@ os.environ["WARSHIPS_CSV"] = str(
 )
 
 # 모듈 import는 env 설정 후
-import importlib
 import tools.warship_tools as wt
 
 # 캐시 초기화 (env 변경 반영)

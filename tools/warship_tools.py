@@ -1,6 +1,7 @@
 import os
-import pandas as pd
 from pathlib import Path
+
+import pandas as pd
 
 _BASE = Path(__file__).parent.parent / "data"
 _FULL_CSV = _BASE / "warships.csv"

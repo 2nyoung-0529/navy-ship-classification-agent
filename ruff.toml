@@ -1,0 +1,11 @@
+line-length = 100
+
+[lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[lint.per-file-ignores]
+# UI/테스트 파일은 환경변수 설정을 import보다 먼저 실행해야 함
+"app_gradio.py" = ["E402"]
+"archive/*.py" = ["E402"]
+"tests/*.py" = ["E402"]

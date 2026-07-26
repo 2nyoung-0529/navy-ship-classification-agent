@@ -2,8 +2,9 @@
 FastAPI 서버 테스트 — WarshipAgent mock 사용 (API 키 불필요)
 """
 import os
+from unittest.mock import patch
+
 import pytest
-from unittest.mock import patch, MagicMock
 
 os.environ.setdefault("ANTHROPIC_API_KEY", "test-key")
 os.environ["WARSHIPS_CSV"] = str(
@@ -15,8 +16,10 @@ os.environ["WARSHIPS_CSV"] = str(
 def client():
     with patch("agent.WarshipAgent.__init__", return_value=None):
         with patch("agent.WarshipAgent.chat", return_value="DDH-975는 충무공이순신함입니다."):
-            from fastapi.testclient import TestClient
             import importlib
+
+            from fastapi.testclient import TestClient
+
             import server as srv
             importlib.reload(srv)
             yield TestClient(srv.app)
